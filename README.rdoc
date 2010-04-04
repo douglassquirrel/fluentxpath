@@ -1,0 +1,63 @@
+= fluentxpath
+
+* http://github.com/douglassquirrel/fluentxpath
+
+== DESCRIPTION:
+
+With the fluentxpath Ruby gem, you build your xpath query in a language that is nearly English and very readable.
+
+== FEATURES/PROBLEMS:
+
+* Navigate to root element or arbitrary element
+* Navigate to children and descendants
+* Specify tag name and attribute values
+* Everything else is missing!
+
+== SYNOPSIS:
+
+  require 'fluentxpath'
+  xpath = Fluentxpath::XPath
+  xpath.that_navigates { to_root_element.with_name("library") }     # "/library"
+  xpath.that_navigates { to_any_element.with_name("book") }         # "//book"
+  xpath.that_navigates { to_root_element.with_name "library"
+                         and_then.to_children.with_name "subject" 
+                         and_then.to_children.with_name "shelf" }   # "/library/subject/shelf"
+  xpath.that_navigates { to_root_element.with_name "library"
+                         and_then.to_descendants.with_name "book" } # "/library//book"
+  xpath.that_navigates { to_any_element.with_name("book")
+                                        and_attributes("title"  => "The Conquest of Bread", 
+                                                       "author" => "Kropotkin") }  # "//book[@author='Kropotkin' and @title='The Conquest of Bread']"
+  # See /test for many more
+
+== REQUIREMENTS:
+
+* None, though you will want something that can use your xpath expression (like Nokogiri)
+
+== INSTALL:
+
+* sudo gem install fluentxpath
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2010 Douglas Squirrel
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
