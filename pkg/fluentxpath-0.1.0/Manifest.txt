@@ -1,0 +1,11 @@
+History.txt
+Manifest.txt
+PostInstall.txt
+README.rdoc
+Rakefile
+lib/fluentxpath.rb
+script/console
+script/destroy
+script/generate
+test/test_fluentxpath.rb
+test/test_helper.rb
